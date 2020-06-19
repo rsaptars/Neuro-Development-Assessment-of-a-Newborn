@@ -1,0 +1,34 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<!-- Main Navigation Bar -->
+<nav *ngIf="showNav" class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand h1">
+        <i class="fa fa-user-md"></i>
+      NEOCARE FOLLOW UP
+    </span>
+
+    <form class="form-inline my-2 my-lg-0">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+      </form>
+  </nav>
+
+  <!-- SideBar -->
+  <div style="display: flex;">
+  <div *ngIf="showNav" class="nav flex-column bg-dark nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a routerLink="/dashboard" class="nav-link active" data-toggle="pill"><i class="fa fa-tachometer-alt"></i>Dashboard</a>
+      <a routerLink="/patient" class="nav-link" data-toggle="pill" aria-selected="false"><i class="fa fa-baby"></i>Add Patient</a>
+      <a routerLink="/mrdsearch" class="nav-link" data-toggle="pill" aria-selected="false"><i class="fa fa-list-ul"></i>MRD Number</a>
+      <a routerLink="/charts" class="nav-link" data-toggle="pill" aria-selected="false"><i class="fa fa-chart-area"></i>Charts</a>
+      <a routerLink="/tables" class="nav-link" data-toggle="pill" aria-selected="false"><i class="fa fa-table"></i>Tables</a>
+      <a routerLink="/search" class="nav-link" data-toggle="pill" aria-selected="false"><i class="fa fa-search"></i>Advanced Search</a>
+      <a routerLink="/users" class="nav-link" data-toggle="pill" aria-selected="false"><i class="fa fa-user-md"></i>Add Users</a>
+      <a class="nav-link" data-toggle="pill" aria-selected="false"><i class="fa fa-table"></i>Export to Excel</a>
+      </div>
+
+<router-outlet></router-outlet>
+</div>

@@ -1,0 +1,470 @@
+
+<!-- Breadcrumbs -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Patient</li>
+    </ol>
+</nav>
+
+<h1> Add Patient </h1>
+<hr>
+<!-- General Details Section -->
+
+<div class="card">
+    <h4 class="card-header">General Details</h4>
+    <div class="card-body">
+
+        <form>
+          <div style="display:flex;" class="col-sm-12">
+            <div class="form-group col-sm-4">
+              <label for="mrd" class="">MRD Number<span style="color:red"> *</span></label>
+              <input type="text" class="form-control" id="mrd" name="MRDno" placeholder="MRD no." [(ngModel)]="generalDetails.MRDno">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="nd" class="">ND Number<span style="color:red"> *</span></label>
+                <input type="text" class="form-control" id="nd" name="NDno" placeholder="ND no." [(ngModel)]="generalDetails.NDno">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="nd" class="">Date</label>
+                <input type="text" readonly class="form-control" id="date" name="Date" [(ngModel)]="generalDetails.Date">
+            </div>
+          </div>
+
+          <div class="col-sm-12">
+            <div class="col-sm-12">
+              <label for="name" class="">Name<span style="color:red"> *</span></label>
+              <input type="text" class="form-control" id="name" name="Name" placeholder="B/O"  [(ngModel)]="generalDetails.Name">
+            </div>
+          </div><br>
+
+          <div class="col-sm-12">
+              <div class="col-sm-12"><label for="name" class="">Sex<span style="color:red"> *</span></label></div>
+             <div class="col-sm-12">
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="male" value="Male"  [(ngModel)]="generalDetails.Sex" (ngModelChange)="changeSex($event)">
+                  <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="female" value="Female" [(ngModel)]="generalDetails.Sex" (ngModelChange)="changeSex($event)">
+                  <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="other" value="Other" [(ngModel)]="generalDetails.Sex" (ngModelChange)="changeSex($event)">
+                  <label class="form-check-label" for="other">Other</label>
+                </div>
+              </div>
+          </div><br>
+
+          <div style="display:flex;" class="col-sm-12">
+              <div class="form-group col-sm-4">
+                <label for="phone" class="">Phone Number<span style="color:red"> *</span></label>
+                <input type="text" class="form-control" id="phone"  name="PhoneNo" [(ngModel)]="generalDetails.PhoneNo" placeholder="Phone Number">
+              </div>
+              <div class="form-group col-sm-4">
+                  <label for="gestational_age" class="">Gestational Age</label>
+                  <div style="width: 100%;" class="btn-group" role="group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{generalDetails.GestationalAge}}</button>
+                        <ul style="height: 200px; width:100%; overflow-y: scroll;" class="dropdown-menu">
+                          <li *ngFor="let ga of gestational_age" (click)="changeGa(ga)" class="dropdown-item">{{ga.value}}</li>
+                        </ul>
+                    </div>
+              </div>
+              <div class="form-group col-sm-4">
+                  <label for="weight" class="">Birth Weight (in grams)<span style="color:red"> *</span></label>
+                  <input type="text" class="form-control" (input)="calcWeightType()" name="BirthWeight" [(ngModel)]="generalDetails.BirthWeight" id="weight">
+              </div>
+          </div>
+
+          <div style="display:flex;" class="col-sm-12">
+                <div class="form-group col-sm-4">
+                  <label for="weight_on_discharge" class="">WT on Discharge (in grams)<span style="color:red"> *</span></label>
+                  <input type="text" class="form-control" id="weight_on_discharge" name="WeightOnDischarge" [(ngModel)]="generalDetails.WeightOnDischarge">
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="hc_on_discharge" class="">HC on discharge (in cms)<span style="color:red"> *</span></label>
+                    <input type="text" class="form-control" id="hc_on_discharge" name="HCOnDischarge" [(ngModel)]="generalDetails.HCOnDischarge">
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="length_on_discharge" class="">Length on discharge (in cms)<span style="color:red"> *</span></label>
+                    <input type="text" class="form-control" id="length_on_discharge" name="LengthOnDischarge" [(ngModel)]="generalDetails.LengthOnDischarge">
+                </div>
+          </div>
+
+          <div style="display:flex;" class="col-sm-12">
+                  <div class="form-group col-sm-4">
+                    <label for="dob" class="">DOB<span style="color:red"> *</span></label>
+                    <input type="text" class="form-control" id="dob" name="DateOfBirth" (input)="calcCA()" [(ngModel)]="generalDetails.DateOfBirth" placeholder="mm/dd/yyyy">
+                  </div>
+                  <div class="form-group col-sm-4">
+                      <label for="cga" class="">CA</label>
+                      <input type="text" readonly class="form-control" [(ngModel)]="generalDetails.CurrentAge" name="CurrentAge" id="ca">
+                  </div>
+                  <div class="form-group col-sm-4">
+                      <label for="admission_date" class="">Date of Admission<span style="color:red"> *</span></label>
+                      <input type="text" class="form-control" id="admission_date" name="DateOfAdmission" [(ngModel)]="generalDetails.DateOfAdmission" placeholder="mm/dd/yyyy">
+                  </div>
+          </div>
+
+          <div style="display:flex;" class="col-sm-12">
+                    <div class="form-group col-sm-4">
+                      <label for="edd" class="">EDD<span style="color:red"> *</span></label>
+                      <input type="text" class="form-control" (input)="calcCGA()" id="edd" name="Edd" [(ngModel)]="generalDetails.Edd" placeholder="mm/dd/yyyy">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="cga" class="">CGA</label>
+                        <input type="text" readonly class="form-control" [(ngModel)]="generalDetails.CurrentGestationalAge" name="CurrentGestationalAge" id="cga">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="discharge_date" class="">Date of Discharge<span style="color:red"> *</span></label>
+                        <input type="text" class="form-control" id="discharge_date"  name="DateOfDischarge" [(ngModel)]="generalDetails.DateOfDischarge"  placeholder="mm/dd/yyyy">
+                    </div>
+          </div>
+
+          <div class="col-sm-12">
+            <div class="col-sm-12">
+              <label for="address" class="">Address<span style="color:red"> *</span></label>
+              <input type="text" class="form-control" name="Adress" [(ngModel)]="generalDetails.Adress" id="address" placeholder="Address">
+            </div>
+          </div><br>
+
+          <div style="display:flex;" class="col-sm-12">
+              <div class="form-group col-sm-6">
+                <label for="state" class="">State<span style="color:red"> *</span></label><br>
+                <div style="width: 100%;" class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{generalDetails.State}}</button>
+                    <ul style="height: 200px; width:100%; overflow-y: scroll;" class="dropdown-menu">
+                      <li *ngFor="let state of states" (click)="changeOption(state)" class="dropdown-item">{{state.name}}</li>
+                    </ul>
+                </div>
+              </div>
+              <div class="form-group col-sm-6">
+                  <label for="city" class="">City<span style="color:red"> *</span></label>
+                  <input type="text" class="form-control" id="city" name="District" [(ngModel)]="generalDetails.District" placeholder="City">
+              </div>
+          </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- Diagnosis Section -->
+
+<div class="card">
+    <h4 class="card-header">Diagnosis</h4>
+    <div class="card-body">
+      <form>
+
+          <div style="display:flex;" class="col-sm-12">
+              <div class="form-group col-sm-3">
+                <label for="term" class="">Preterm/Term/Posterm</label>
+                <input type="text" readonly  name="Term" [(ngModel)]="this.generalDetails.Term"  class="form-control" id="term">
+              </div>
+              <div class="form-group col-sm-3">
+                  <label for="ga" class="">GA</label>
+                  <input type="text" readonly  name="GestationalAge" [(ngModel)]="this.generalDetails.GestationalAge"  class="form-control" id="ga">
+              </div>
+              <div class="form-group col-sm-3">
+                  <label for="aga_sga_lga" class="">AGA/SGA/LGA</label>
+                  <input type="text"  name="AgaSgaLga" [(ngModel)]="this.generalDetails.AgaSgaLga"  class="form-control" id="aga_sga_lga">
+              </div>
+              <div class="form-group col-sm-3">
+                  <label for="lbw_vlbw_elbw" class="">LBW/VLBW/ELBW</label>
+                  <input type="text" readonly  name="LbwVlbwElbw" [(ngModel)]="this.generalDetails.LbwVlbwElbw"  class="form-control" id="lbw_vlbw_elbw">
+              </div>
+          </div>
+
+          <h6>Morbidities</h6>
+
+          <div style="display:flex;" class="col-sm-12">
+
+            <div class="col-sm-3">
+              <div style="width:100%;" class="btn-group" role="group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.Morbidities[0]}}</button>
+                  <ul style="width:100%; height: 200px; overflow-y: scroll;" class="dropdown-menu">
+                    <li *ngFor="let risk of risks_1" (click)="changeRisk(risk,$event)" class="dropdown-item">{{risk.MorbidityName}}</li>
+                  </ul>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div style="width:100%;" class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.Morbidities[1]}}</button>
+                    <ul style="width:100%; height: 200px;  overflow-y: scroll;" class="dropdown-menu">
+                      <li *ngFor="let risk of risks_1" (click)="changeRisk(risk,$event)" class="dropdown-item">{{risk.MorbidityName}}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div style="width:100%;" class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.Morbidities[2]}}</button>
+                    <ul style="width:100%; height: 200px;  overflow-y: scroll;" class="dropdown-menu">
+                      <li *ngFor="let risk of risks_1" (click)="changeRisk(risk,$event)" class="dropdown-item">{{risk.MorbidityName}}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div style="width:100%;" class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.Morbidities[3]}}</button>
+                    <ul style="width:100%; height: 200px;  overflow-y: scroll;" class="dropdown-menu">
+                      <li *ngFor="let risk of risks_1" (click)="changeRisk(risk,$event)" class="dropdown-item">{{risk.MorbidityName}}</li>
+                    </ul>
+                </div>
+            </div>
+
+          </div>
+
+          <br>
+
+          <div style="display:flex;" class="col-sm-12">
+
+              <div class="col-sm-3">
+                <div style="width:100%;" class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.Morbidities[4]}}</button>
+                    <ul style="width:100%; height: 200px;  overflow-y: scroll;" class="dropdown-menu">
+                      <li *ngFor="let risk of risks_1" (click)="changeRisk(risk,$event)" class="dropdown-item">{{risk.MorbidityName}}</li>
+                    </ul>
+                </div>
+              </div>
+  
+              <div class="col-sm-3">
+                  <div style="width:100%;" class="btn-group" role="group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.Morbidities[5]}}</button>
+                      <ul style="width:100%; height: 200px;  overflow-y: scroll;" class="dropdown-menu">
+                        <li *ngFor="let risk of risks_1" (click)="changeRisk(risk,$event)" class="dropdown-item">{{risk.MorbidityName}}</li>
+                      </ul>
+                  </div>
+              </div>
+  
+              <div class="col-sm-3">
+                  <div style="width:100%;" class="btn-group" role="group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.Morbidities[6]}}</button>
+                      <ul style="width:100%; height: 200px;  overflow-y: scroll;" class="dropdown-menu">
+                        <li *ngFor="let risk of risks_1" (click)="changeRisk(risk,$event)" class="dropdown-item">{{risk.MorbidityName}}</li>
+                      </ul>
+                  </div>
+              </div>
+  
+              <div class="form-group col-sm-3">
+                  <input type="text" class="form-control" id="risk_other" placeholder="Other">
+              </div>
+  
+          </div>
+
+          <br>
+
+          <div style="display:flex;" class="col-sm-12">
+
+              <div class="col-sm-3">
+                <div class="btn-group" role="group">
+                    <button style="width:70%;"  type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.MorbiditiesTreatment[0]}}</button>
+                    <input style="width:30%;"  type="text" class="form-control" id="rt_1_days" placeholder="Days">
+                    <ul class="dropdown-menu">
+                      <li *ngFor="let rt of risks_treatments" (click)="addRiskTreatment(rt,$event)" class="dropdown-item">{{rt.value}}</li>
+                    </ul>
+                </div>
+              </div>
+  
+              <div class="col-sm-3">
+                  <div class="btn-group" role="group">
+                      <button style="width:70%;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.MorbiditiesTreatment[1]}}</button>
+                      <input style="width:30%;" type="text" class="form-control" id="rt_2_days" placeholder="Days">
+                      <ul class="dropdown-menu">
+                          <li *ngFor="let rt of risks_treatments" (click)="addRiskTreatment(rt,$event)"  class="dropdown-item">{{rt.value}}</li>
+                      </ul>
+                  </div>
+              </div>
+  
+              <div class="col-sm-3">
+                  <div class="btn-group" role="group">
+                      <button style="width:70%;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.MorbiditiesTreatment[2]}}</button>
+                      <input style="width:30%;" type="text" class="form-control" id="rt_3_days" placeholder="Days">
+                      <ul class="dropdown-menu">
+                          <li *ngFor="let rt of risks_treatments" (click)="addRiskTreatment(rt,$event)"  class="dropdown-item">{{rt.value}}</li>
+                      </ul>
+                  </div>
+              </div>
+  
+              <div class="col-sm-3">
+                  <div class="btn-group" role="group">
+                      <button style="width:70%;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{diagnosis.MorbiditiesTreatment[3]}}</button>
+                      <input style="width:30%;" type="text" class="form-control" id="rt_4_days" placeholder="Days">
+                      <ul class="dropdown-menu">
+                          <li *ngFor="let rt of risks_treatments" (click)="addRiskTreatment(rt,$event)"  class="dropdown-item">{{rt.value}}</li>
+                      </ul>
+                  </div>
+              </div>
+  
+         </div>
+
+      </form>
+    </div>
+  </div> 
+  
+<!-- Risk Factor Section -->
+
+<div class="card">
+    <h4 class="card-header">Risk Factor</h4>
+    <div class="card-body">
+
+        <form>
+            <div style="display:flex;justify-content: space-between;" class="col-sm-12">
+                <div class="col-sm-4">
+                  <h4>Mild</h4>
+                  <hr>
+                  <div style="width: 100%;" class="btn-group" role="group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mild Risks</button>
+                      <ul style="height: 200px; width:100%; overflow-y: scroll;" class="dropdown-menu">
+                        <li *ngFor="let r_mild of risks_mild" class="dropdown-item">
+                            <input class="form-check-input" type="checkbox" [checked]="r_mild.checked" (change)="changeStatus(r_mild.Severity,0,risks_mild)" value="r_mild.Risks" id="r_mild.id">
+                            <label class="form-check-label" for="r_mild.id">
+                              {{r_mild.Risks}}
+                            </label>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <h4>Moderate</h4>
+                  <hr>
+                  <div style="width: 100%;" class="btn-group" role="group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Moderate Risks</button>
+                      <ul style="height: 200px; width:100%; overflow-y: scroll;" class="dropdown-menu">
+                        <li *ngFor="let r_mod of risks_moderate" class="dropdown-item">
+                            <input class="form-check-input" type="checkbox"  [checked]="r_mod.checked" (change)="changeStatus(r_mod.Severity,1,risks_moderate)" value="r_mod.Risks" id="r_mod.id">
+                            <label class="form-check-label" for="r_mod.id">
+                              {{r_mod.Risks}}
+                            </label>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <h4>High</h4>
+                    <hr>
+                    <div style="width: 100%;" class="btn-group" role="group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">High Risks</button>
+                        <ul style="height: 200px; width:100%; overflow-y: scroll;" class="dropdown-menu">
+                          <li *ngFor="let r_high of risks_high" class="dropdown-item">
+                              <input class="form-check-input" type="checkbox" [checked]="r_high.checked" (change)="changeStatus(r_high.Severity,2,risks_high)" value="r_high.Risks" id="r_high.id">
+                              <label class="form-check-label" for="r_high.id">
+                                {{r_high.Risks}}
+                              </label>
+                          </li>
+                        </ul>
+                    </div>
+                  </div>
+            </div>
+            <br><br>
+            <div class="col-sm-12">
+                <div class="col-sm-12">
+                  <label>Risk Type</label><input type="text" readonly [(ngModel)]="risk_type" name="risk_type" class="form-control" id="risk_type">
+                </div>
+              </div>
+        </form>
+
+    </div>
+  </div> 
+
+  <!-- Investigation Section -->
+
+<div class="card">
+    <h4 class="card-header">Investigation</h4>
+    <div class="card-body">
+
+        <form>
+            <div style="display:flex;justify-content: space-between;" class="col-sm-12">
+                <div class="col-sm-4">
+                  <div *ngFor="let i of investigation" class="form-check check">
+                      <input class="form-check-input" type="checkbox" value="i.value" id="i.id" [checked]="i.checked === true" (change)="changeStatus(i.id,$event,investigation)">
+                      <label class="form-check-label" for="i.id">
+                        {{i.value}}
+                      </label>
+                  <br><br>
+                  <div *ngIf="i.checked === true" class="btn-group" role="group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{i.result}}</button>
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-item" (click)="addInvestigationResult(i.id,'Normal')">Normal</li>
+                        <li class="dropdown-item" (click)="addInvestigationResult(i.id,'Abnormal')">Abnormal</li>
+                      </ul>
+                  </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-12">
+                  <input type="text" class="form-control" id="other_investigation" placeholder="Other">
+                </div>
+              </div>
+        </form>
+
+    </div>
+  </div> 
+
+  <!-- Immunisation Section -->
+
+<div class="card">
+    <h4 class="card-header">Immunization</h4>
+    <div class="card-body">
+
+        <form>
+            <div style="display:flex;justify-content: space-between;" class="col-sm-12">
+                <div class="col-sm-4">
+                  <div *ngFor="let immu of immunization" class="form-check check">
+                      <input class="form-check-input" type="checkbox"  [checked]="immu.checked" (change)="changeStatus(immu.id,$event,immunization)" value="immu.value" id="immu.id">
+                      <label class="form-check-label" for="immu.id">
+                        {{immu.value}}
+                      </label>
+                  </div>
+                </div>
+            </div>
+        </form>
+  
+
+    </div>
+</div> 
+
+  <!-- Medication Section -->
+
+<div class="card">
+    <h4 class="card-header">Medication</h4>
+    <div class="card-body">
+
+      <form>
+          <div style="display:flex;justify-content: space-between;" class="col-sm-12">
+              <div class="col-sm-4">
+                <h6>Medication</h6>
+
+                <div *ngFor="let medicine of medication" class="form-check check">
+                    <input class="form-check-input" type="checkbox" [checked]="medicine.checked" (change)="changeStatus(medicine.id,$event,medication)" value="medicine.value" id="medicine.id">
+                    <label class="form-check-label" for="medicine.id">
+                      {{medicine.value}}
+                    </label>
+                </div>
+
+              </div>
+              <div class="col-sm-4">
+                <h6>Anticonvulsant</h6>
+
+                <div *ngFor="let ac of anticonvulsant" class="form-check check">
+                    <input class="form-check-input" type="checkbox" [checked]="ac.checked" (change)="changeStatus(ac.id,$event,anticonvulsant)" value="ac.value" id="ac.id">
+                    <label class="form-check-label" for="ac.id">
+                      {{ac.value}}
+                    </label>
+                </div>
+
+              </div>
+          </div>
+
+      </form>
+
+    </div>
+  </div>
+  
+  <div style="text-align:center;">
+    <button type="button" (click)="submit(generalDetails);" class="btn btn-primary btn-lg">Submit</button>
+  </div>

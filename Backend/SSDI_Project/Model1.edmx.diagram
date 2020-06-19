@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe2477e7e4ba4c03b9d3926a5245e3c8" Name="Diagram1">
+        <EntityTypeShape EntityType="nicuModel.Patient" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="nicuModel.State" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nicuModel.Anticonvulsant" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="nicuModel.Diagnosi" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="nicuModel.Immunization" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="nicuModel.Investigation" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="nicuModel.PatientRisk" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <AssociationConnector Association="nicuModel.FK__Anticonvu__MRDno__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="nicuModel.FK__Diagnosis__MRDno__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="nicuModel.FK__Immunizat__MRDno__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="nicuModel.FK__Investiga__MRDno__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="nicuModel.FK__PatientRi__MRDno__3E52440B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="nicuModel.Morbidity" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="nicuModel.Risk" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="nicuModel.MedicationType" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="nicuModel.Medication" Width="1.5" PointX="3" PointY="17.5" />
+        <AssociationConnector Association="nicuModel.FK__Medicatio__MRDno__6383C8BA" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,12 @@
+nav, .card, h1 {
+    margin: 16px;
+}
+.card h4 {
+    color: #007bbc;
+}
+.dropdown-toggle{
+    width: 100%;
+}
+.check {
+    margin: 48px 0 48px 0;
+}

@@ -1,0 +1,701 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="nicuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'nicu.dbo.Anticonvulsant' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Anticonvulsant">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Anticonvulsant" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'nicu.dbo.Diagnosis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Diagnosis">
+          <Key>
+            <PropertyRef Name="MRDno" />
+            <PropertyRef Name="GestationalAge" />
+          </Key>
+          <Property Name="MRDno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Term" Type="varchar" MaxLength="20" />
+          <Property Name="GestationalAge" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AgaSgaLga" Type="varchar" MaxLength="20" />
+          <Property Name="LbwVlbwElbw" Type="varchar" MaxLength="20" />
+          <Property Name="Morbidity" Type="varchar" MaxLength="200" />
+          <Property Name="MorbiditiesTreatment" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'nicu.dbo.Immunization' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Immunization">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ImmunnizationType" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'nicu.dbo.Investigation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Investigation">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="InvestigationType" Type="varchar" MaxLength="200" />
+          <Property Name="Severity" Type="varchar" MaxLength="20" />
+          <Property Name="Reason" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'nicu.dbo.Medication' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Medication">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Medication" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'nicu.dbo.MedicationTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MedicationTypes">
+          <Key>
+            <PropertyRef Name="MedicationTypeId" />
+          </Key>
+          <Property Name="MedicationTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Medication" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Morbidities">
+          <Key>
+            <PropertyRef Name="MorbidityId" />
+          </Key>
+          <Property Name="MorbidityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MorbidityName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NDno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Sex" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="GestationalAge" Type="varchar" MaxLength="50" />
+          <Property Name="BirthWeight" Type="int" Nullable="false" />
+          <Property Name="WeightOnDischarge" Type="int" Nullable="false" />
+          <Property Name="HCOnDischarge" Type="int" Nullable="false" />
+          <Property Name="LengthOnDischarge" Type="int" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="CurrentAge" Type="varchar" MaxLength="50" />
+          <Property Name="DateOfAdmission" Type="date" Nullable="false" />
+          <Property Name="Edd" Type="date" Nullable="false" />
+          <Property Name="CurrentGestationalAge" Type="varchar" MaxLength="20" />
+          <Property Name="DateOfDischarge" Type="date" Nullable="false" />
+          <Property Name="Adress" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="District" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Medication" Type="varchar" MaxLength="1000" />
+          <Property Name="Anticonvulsant" Type="varchar" MaxLength="1000" />
+          <Property Name="Term" Type="varchar" MaxLength="50" />
+          <Property Name="AgaSgaLga" Type="varchar" MaxLength="50" />
+          <Property Name="LbwVlbwElbw" Type="varchar" MaxLength="50" />
+          <Property Name="Morbidity" Type="varchar" MaxLength="200" />
+          <Property Name="MorbiditiesTreatment" Type="varchar" MaxLength="1000" />
+          <Property Name="InvestigationType" Type="varchar" MaxLength="2000" />
+          <Property Name="Severity" Type="varchar" MaxLength="200" />
+          <Property Name="Reason" Type="varchar" MaxLength="2000" />
+          <Property Name="ImmunnizationType" Type="varchar" MaxLength="200" />
+          <Property Name="Risks" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'nicu.dbo.PatientRisks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PatientRisks">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Risks" Type="varchar" MaxLength="200" />
+          <Property Name="Severity" Type="int" />
+          <Property Name="OverallSeverity" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'nicu.dbo.Risks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Risks">
+          <Key>
+            <PropertyRef Name="RisksId" />
+          </Key>
+          <Property Name="RisksId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Risks" Type="varchar" MaxLength="200" />
+          <Property Name="Severity" Type="int" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="StateName" />
+          </Key>
+          <Property Name="StateName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Abbr" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <Association Name="FK__Anticonvu__MRDno__47DBAE45">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Anticonvulsant" Type="Self.Anticonvulsant" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="Anticonvulsant">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosis__MRDno__3A81B327">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Diagnosis" Type="Self.Diagnosis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="Diagnosis">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Immunizat__MRDno__4316F928">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Immunization" Type="Self.Immunization" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="Immunization">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investiga__MRDno__412EB0B6">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Investigation" Type="Self.Investigation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="Investigation">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicatio__MRDno__6383C8BA">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Medication" Type="Self.Medication" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="Medication">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PatientRi__MRDno__3E52440B">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="PatientRisks" Type="Self.PatientRisks" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="PatientRisks">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="nicuModelStoreContainer">
+          <EntitySet Name="Morbidities" EntityType="Self.Morbidities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Anticonvulsant" EntityType="Self.Anticonvulsant" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Anticonvulsant].[MRDno] AS [MRDno], 
+    [Anticonvulsant].[Anticonvulsant] AS [Anticonvulsant]
+    FROM [dbo].[Anticonvulsant] AS [Anticonvulsant]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Diagnosis" EntityType="Self.Diagnosis" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Diagnosis].[MRDno] AS [MRDno], 
+    [Diagnosis].[Term] AS [Term], 
+    [Diagnosis].[GestationalAge] AS [GestationalAge], 
+    [Diagnosis].[AgaSgaLga] AS [AgaSgaLga], 
+    [Diagnosis].[LbwVlbwElbw] AS [LbwVlbwElbw], 
+    [Diagnosis].[Morbidity] AS [Morbidity], 
+    [Diagnosis].[MorbiditiesTreatment] AS [MorbiditiesTreatment]
+    FROM [dbo].[Diagnosis] AS [Diagnosis]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Immunization" EntityType="Self.Immunization" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Immunization].[MRDno] AS [MRDno], 
+    [Immunization].[ImmunnizationType] AS [ImmunnizationType]
+    FROM [dbo].[Immunization] AS [Immunization]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Investigation" EntityType="Self.Investigation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Investigation].[MRDno] AS [MRDno], 
+    [Investigation].[InvestigationType] AS [InvestigationType], 
+    [Investigation].[Severity] AS [Severity], 
+    [Investigation].[Reason] AS [Reason]
+    FROM [dbo].[Investigation] AS [Investigation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Medication" EntityType="Self.Medication" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Medication].[MRDno] AS [MRDno], 
+    [Medication].[Medication] AS [Medication]
+    FROM [dbo].[Medication] AS [Medication]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MedicationTypes" EntityType="Self.MedicationTypes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MedicationTypes].[MedicationTypeId] AS [MedicationTypeId], 
+    [MedicationTypes].[Medication] AS [Medication]
+    FROM [dbo].[MedicationTypes] AS [MedicationTypes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PatientRisks" EntityType="Self.PatientRisks" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PatientRisks].[MRDno] AS [MRDno], 
+    [PatientRisks].[Risks] AS [Risks], 
+    [PatientRisks].[Severity] AS [Severity], 
+    [PatientRisks].[OverallSeverity] AS [OverallSeverity]
+    FROM [dbo].[PatientRisks] AS [PatientRisks]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Risks" EntityType="Self.Risks" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Risks].[RisksId] AS [RisksId], 
+    [Risks].[Risks] AS [Risks], 
+    [Risks].[Severity] AS [Severity]
+    FROM [dbo].[Risks] AS [Risks]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Anticonvu__MRDno__47DBAE45" Association="Self.FK__Anticonvu__MRDno__47DBAE45">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Anticonvulsant" EntitySet="Anticonvulsant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosis__MRDno__3A81B327" Association="Self.FK__Diagnosis__MRDno__3A81B327">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Diagnosis" EntitySet="Diagnosis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Immunizat__MRDno__4316F928" Association="Self.FK__Immunizat__MRDno__4316F928">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Immunization" EntitySet="Immunization" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investiga__MRDno__412EB0B6" Association="Self.FK__Investiga__MRDno__412EB0B6">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Investigation" EntitySet="Investigation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicatio__MRDno__6383C8BA" Association="Self.FK__Medicatio__MRDno__6383C8BA">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Medication" EntitySet="Medication" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PatientRi__MRDno__3E52440B" Association="Self.FK__PatientRi__MRDno__3E52440B">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="PatientRisks" EntitySet="PatientRisks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="nicuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NDno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GestationalAge" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BirthWeight" Type="Int32" Nullable="false" />
+          <Property Name="WeightOnDischarge" Type="Int32" Nullable="false" />
+          <Property Name="HCOnDischarge" Type="Int32" Nullable="false" />
+          <Property Name="LengthOnDischarge" Type="Int32" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentAge" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfAdmission" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Edd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentGestationalAge" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfDischarge" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Adress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Anticonvulsant" Relationship="Self.FK__Anticonvu__MRDno__47DBAE45" FromRole="Patient" ToRole="Anticonvulsant" />
+          <NavigationProperty Name="Diagnosis" Relationship="Self.FK__Diagnosis__MRDno__3A81B327" FromRole="Patient" ToRole="Diagnosis" />
+          <NavigationProperty Name="Immunization" Relationship="Self.FK__Immunizat__MRDno__4316F928" FromRole="Patient" ToRole="Immunization" />
+          <NavigationProperty Name="Investigation" Relationship="Self.FK__Investiga__MRDno__412EB0B6" FromRole="Patient" ToRole="Investigation" />
+          <NavigationProperty Name="PatientRisk" Relationship="Self.FK__PatientRi__MRDno__3E52440B" FromRole="Patient" ToRole="PatientRisks" />
+          <Property Name="Medication" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Anticonvulsant1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Term" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AgaSgaLga" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LbwVlbwElbw" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Morbidity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MorbiditiesTreatment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="InvestigationType" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Severity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Reason" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ImmunnizationType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Risks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Medication1" Relationship="nicuModel.FK__Medicatio__MRDno__6383C8BA" FromRole="Patient" ToRole="Medication" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateName" />
+          </Key>
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Abbr" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Anticonvulsant">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Anticonvulsant1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Anticonvu__MRDno__47DBAE45" FromRole="Anticonvulsant" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Diagnosi">
+          <Key>
+            <PropertyRef Name="MRDno" />
+            <PropertyRef Name="GestationalAge" />
+          </Key>
+          <Property Name="MRDno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Term" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GestationalAge" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AgaSgaLga" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LbwVlbwElbw" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Morbidity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MorbiditiesTreatment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Diagnosis__MRDno__3A81B327" FromRole="Diagnosis" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Immunization">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImmunnizationType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Immunizat__MRDno__4316F928" FromRole="Immunization" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Investigation">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InvestigationType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Severity" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Reason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Investiga__MRDno__412EB0B6" FromRole="Investigation" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="PatientRisk">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Risks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Severity" Type="Int32" />
+          <Property Name="OverallSeverity" Type="Int32" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__PatientRi__MRDno__3E52440B" FromRole="PatientRisks" ToRole="Patient" />
+        </EntityType>
+        <Association Name="FK__Anticonvu__MRDno__47DBAE45">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Anticonvulsant" Type="Self.Anticonvulsant" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="Anticonvulsant">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosis__MRDno__3A81B327">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Diagnosis" Type="Self.Diagnosi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="Diagnosis">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Immunizat__MRDno__4316F928">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Immunization" Type="Self.Immunization" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="Immunization">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investiga__MRDno__412EB0B6">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Investigation" Type="Self.Investigation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="Investigation">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PatientRi__MRDno__3E52440B">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="PatientRisks" Type="Self.PatientRisk" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="PatientRisks">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="nicuEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="Anticonvulsants" EntityType="Self.Anticonvulsant" />
+          <EntitySet Name="Diagnosis" EntityType="Self.Diagnosi" />
+          <EntitySet Name="Immunizations" EntityType="Self.Immunization" />
+          <EntitySet Name="Investigations" EntityType="Self.Investigation" />
+          <EntitySet Name="PatientRisks" EntityType="Self.PatientRisk" />
+          <AssociationSet Name="FK__Anticonvu__MRDno__47DBAE45" Association="Self.FK__Anticonvu__MRDno__47DBAE45">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Anticonvulsant" EntitySet="Anticonvulsants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosis__MRDno__3A81B327" Association="Self.FK__Diagnosis__MRDno__3A81B327">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Diagnosis" EntitySet="Diagnosis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Immunizat__MRDno__4316F928" Association="Self.FK__Immunizat__MRDno__4316F928">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Immunization" EntitySet="Immunizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investiga__MRDno__412EB0B6" Association="Self.FK__Investiga__MRDno__412EB0B6">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Investigation" EntitySet="Investigations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PatientRi__MRDno__3E52440B" Association="Self.FK__PatientRi__MRDno__3E52440B">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientRisks" EntitySet="PatientRisks" />
+          </AssociationSet>
+          <EntitySet Name="Morbidities" EntityType="nicuModel.Morbidity" />
+          <EntitySet Name="Risks" EntityType="nicuModel.Risk" />
+          <EntitySet Name="MedicationTypes" EntityType="nicuModel.MedicationType" />
+          <EntitySet Name="Medications" EntityType="nicuModel.Medication" />
+          <AssociationSet Name="FK__Medicatio__MRDno__6383C8BA" Association="nicuModel.FK__Medicatio__MRDno__6383C8BA">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Medication" EntitySet="Medications" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Morbidity">
+          <Key>
+            <PropertyRef Name="MorbidityId" />
+          </Key>
+          <Property Name="MorbidityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MorbidityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Risk">
+          <Key>
+            <PropertyRef Name="RisksId" />
+          </Key>
+          <Property Name="RisksId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Risks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Severity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MedicationType">
+          <Key>
+            <PropertyRef Name="MedicationTypeId" />
+          </Key>
+          <Property Name="MedicationTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Medication" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Medication">
+          <Key>
+            <PropertyRef Name="MRDno" />
+          </Key>
+          <Property Name="MRDno" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Medication1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="nicuModel.FK__Medicatio__MRDno__6383C8BA" FromRole="Medication" ToRole="Patient" />
+        </EntityType>
+        <Association Name="FK__Medicatio__MRDno__6383C8BA">
+          <End Type="nicuModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="nicuModel.Medication" Role="Medication" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="MRDno" />
+            </Principal>
+            <Dependent Role="Medication">
+              <PropertyRef Name="MRDno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="nicuModelStoreContainer" CdmEntityContainer="nicuEntities">
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="nicuModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Risks" ColumnName="Risks" />
+                <ScalarProperty Name="ImmunnizationType" ColumnName="ImmunnizationType" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+                <ScalarProperty Name="MorbiditiesTreatment" ColumnName="MorbiditiesTreatment" />
+                <ScalarProperty Name="Morbidity" ColumnName="Morbidity" />
+                <ScalarProperty Name="LbwVlbwElbw" ColumnName="LbwVlbwElbw" />
+                <ScalarProperty Name="AgaSgaLga" ColumnName="AgaSgaLga" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="Anticonvulsant1" ColumnName="Anticonvulsant" />
+                <ScalarProperty Name="Medication" ColumnName="Medication" />
+                <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+                <ScalarProperty Name="NDno" ColumnName="NDno" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="GestationalAge" ColumnName="GestationalAge" />
+                <ScalarProperty Name="BirthWeight" ColumnName="BirthWeight" />
+                <ScalarProperty Name="WeightOnDischarge" ColumnName="WeightOnDischarge" />
+                <ScalarProperty Name="HCOnDischarge" ColumnName="HCOnDischarge" />
+                <ScalarProperty Name="LengthOnDischarge" ColumnName="LengthOnDischarge" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="CurrentAge" ColumnName="CurrentAge" />
+                <ScalarProperty Name="DateOfAdmission" ColumnName="DateOfAdmission" />
+                <ScalarProperty Name="Edd" ColumnName="Edd" />
+                <ScalarProperty Name="CurrentGestationalAge" ColumnName="CurrentGestationalAge" />
+                <ScalarProperty Name="DateOfDischarge" ColumnName="DateOfDischarge" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="District" ColumnName="District" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="nicuModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Abbr" ColumnName="Abbr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Anticonvulsants">
+            <EntityTypeMapping TypeName="nicuModel.Anticonvulsant">
+              <MappingFragment StoreEntitySet="Anticonvulsant">
+                <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+                <ScalarProperty Name="Anticonvulsant1" ColumnName="Anticonvulsant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagnosis">
+            <EntityTypeMapping TypeName="nicuModel.Diagnosi">
+              <MappingFragment StoreEntitySet="Diagnosis">
+                <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="GestationalAge" ColumnName="GestationalAge" />
+                <ScalarProperty Name="AgaSgaLga" ColumnName="AgaSgaLga" />
+                <ScalarProperty Name="LbwVlbwElbw" ColumnName="LbwVlbwElbw" />
+                <ScalarProperty Name="Morbidity" ColumnName="Morbidity" />
+                <ScalarProperty Name="MorbiditiesTreatment" ColumnName="MorbiditiesTreatment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Immunizations">
+            <EntityTypeMapping TypeName="nicuModel.Immunization">
+              <MappingFragment StoreEntitySet="Immunization">
+                <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+                <ScalarProperty Name="ImmunnizationType" ColumnName="ImmunnizationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Investigations">
+            <EntityTypeMapping TypeName="nicuModel.Investigation">
+              <MappingFragment StoreEntitySet="Investigation">
+                <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+                <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientRisks">
+            <EntityTypeMapping TypeName="nicuModel.PatientRisk">
+              <MappingFragment StoreEntitySet="PatientRisks">
+                <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+                <ScalarProperty Name="Risks" ColumnName="Risks" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="OverallSeverity" ColumnName="OverallSeverity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Morbidities">
+            <EntityTypeMapping TypeName="nicuModel.Morbidity">
+              <MappingFragment StoreEntitySet="Morbidities">
+                <ScalarProperty Name="MorbidityName" ColumnName="MorbidityName" />
+                <ScalarProperty Name="MorbidityId" ColumnName="MorbidityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Risks">
+            <EntityTypeMapping TypeName="nicuModel.Risk">
+              <MappingFragment StoreEntitySet="Risks">
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="Risks" ColumnName="Risks" />
+                <ScalarProperty Name="RisksId" ColumnName="RisksId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicationTypes">
+            <EntityTypeMapping TypeName="nicuModel.MedicationType">
+              <MappingFragment StoreEntitySet="MedicationTypes">
+                <ScalarProperty Name="Medication" ColumnName="Medication" />
+                <ScalarProperty Name="MedicationTypeId" ColumnName="MedicationTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medications">
+            <EntityTypeMapping TypeName="nicuModel.Medication">
+              <MappingFragment StoreEntitySet="Medication">
+                <ScalarProperty Name="Medication1" ColumnName="Medication" />
+                <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

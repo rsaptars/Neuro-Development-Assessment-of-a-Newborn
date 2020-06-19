@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="nicuModelStoreContainer" CdmEntityContainer="nicuEntities">
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="nicuModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="Risks" ColumnName="Risks" />
+          <ScalarProperty Name="ImmunnizationType" ColumnName="ImmunnizationType" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+          <ScalarProperty Name="MorbiditiesTreatment" ColumnName="MorbiditiesTreatment" />
+          <ScalarProperty Name="Morbidity" ColumnName="Morbidity" />
+          <ScalarProperty Name="LbwVlbwElbw" ColumnName="LbwVlbwElbw" />
+          <ScalarProperty Name="AgaSgaLga" ColumnName="AgaSgaLga" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="Anticonvulsant1" ColumnName="Anticonvulsant" />
+          <ScalarProperty Name="Medication" ColumnName="Medication" />
+          <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+          <ScalarProperty Name="NDno" ColumnName="NDno" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="GestationalAge" ColumnName="GestationalAge" />
+          <ScalarProperty Name="BirthWeight" ColumnName="BirthWeight" />
+          <ScalarProperty Name="WeightOnDischarge" ColumnName="WeightOnDischarge" />
+          <ScalarProperty Name="HCOnDischarge" ColumnName="HCOnDischarge" />
+          <ScalarProperty Name="LengthOnDischarge" ColumnName="LengthOnDischarge" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="CurrentAge" ColumnName="CurrentAge" />
+          <ScalarProperty Name="DateOfAdmission" ColumnName="DateOfAdmission" />
+          <ScalarProperty Name="Edd" ColumnName="Edd" />
+          <ScalarProperty Name="CurrentGestationalAge" ColumnName="CurrentGestationalAge" />
+          <ScalarProperty Name="DateOfDischarge" ColumnName="DateOfDischarge" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="District" ColumnName="District" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="nicuModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="Abbr" ColumnName="Abbr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Anticonvulsants">
+      <EntityTypeMapping TypeName="nicuModel.Anticonvulsant">
+        <MappingFragment StoreEntitySet="Anticonvulsant">
+          <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+          <ScalarProperty Name="Anticonvulsant1" ColumnName="Anticonvulsant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diagnosis">
+      <EntityTypeMapping TypeName="nicuModel.Diagnosi">
+        <MappingFragment StoreEntitySet="Diagnosis">
+          <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="GestationalAge" ColumnName="GestationalAge" />
+          <ScalarProperty Name="AgaSgaLga" ColumnName="AgaSgaLga" />
+          <ScalarProperty Name="LbwVlbwElbw" ColumnName="LbwVlbwElbw" />
+          <ScalarProperty Name="Morbidity" ColumnName="Morbidity" />
+          <ScalarProperty Name="MorbiditiesTreatment" ColumnName="MorbiditiesTreatment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Immunizations">
+      <EntityTypeMapping TypeName="nicuModel.Immunization">
+        <MappingFragment StoreEntitySet="Immunization">
+          <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+          <ScalarProperty Name="ImmunnizationType" ColumnName="ImmunnizationType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Investigations">
+      <EntityTypeMapping TypeName="nicuModel.Investigation">
+        <MappingFragment StoreEntitySet="Investigation">
+          <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+          <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientRisks">
+      <EntityTypeMapping TypeName="nicuModel.PatientRisk">
+        <MappingFragment StoreEntitySet="PatientRisks">
+          <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+          <ScalarProperty Name="Risks" ColumnName="Risks" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="OverallSeverity" ColumnName="OverallSeverity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Morbidities">
+      <EntityTypeMapping TypeName="nicuModel.Morbidity">
+        <MappingFragment StoreEntitySet="Morbidities">
+          <ScalarProperty Name="MorbidityName" ColumnName="MorbidityName" />
+          <ScalarProperty Name="MorbidityId" ColumnName="MorbidityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Risks">
+      <EntityTypeMapping TypeName="nicuModel.Risk">
+        <MappingFragment StoreEntitySet="Risks">
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="Risks" ColumnName="Risks" />
+          <ScalarProperty Name="RisksId" ColumnName="RisksId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicationTypes">
+      <EntityTypeMapping TypeName="nicuModel.MedicationType">
+        <MappingFragment StoreEntitySet="MedicationTypes">
+          <ScalarProperty Name="Medication" ColumnName="Medication" />
+          <ScalarProperty Name="MedicationTypeId" ColumnName="MedicationTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medications">
+      <EntityTypeMapping TypeName="nicuModel.Medication">
+        <MappingFragment StoreEntitySet="Medication">
+          <ScalarProperty Name="Medication1" ColumnName="Medication" />
+          <ScalarProperty Name="MRDno" ColumnName="MRDno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

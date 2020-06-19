@@ -1,0 +1,73 @@
+
+<!-- Breadcrumbs -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">MRD Number</li>
+    </ol>
+</nav>
+
+<form>
+    <div style="display: flex;" class="col-sm-12">
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="number" name="MRDno" [(ngModel)]="MRDno" placeholder="Enter MRD Number">
+        </div>
+
+        <div class="col-sm-3">
+          <button class="btn btn-primary" (click)="display()">Search</button>
+        </div>
+      </div>
+</form>
+
+<table *ngIf="found" class="table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">Data</th>
+    </tr>
+  </thead>
+   <tbody>
+    <tr>
+       <td>Name</td>
+       <td>{{result.Name}}</td>
+    </tr>
+    <tr>
+      <td>Medication</td>
+      <td>{{result.Medication}}</td>
+    </tr>      
+    <tr>
+      <td>MRD Number</td>
+      <td>{{result.MRDno}}</td>
+    </tr>       
+    <tr>
+      <td>Gestational Age</td>
+      <td>{{result.GestationalAge}}</td>
+    </tr>       
+    <tr>
+      <td>Date Of Birth</td>
+      <td>{{result.DateOfBirth}}</td>
+    </tr>       
+    <tr>
+      <td>Morbidities</td>
+      <td>{{result.Morbidities}}</td>
+    </tr>       
+    <tr>
+      <td>Term</td>
+      <td>{{result.Term}}</td>
+    </tr>       
+    <tr>
+      <td>Immunnization Type</td>
+      <td>{{result.ImmunnizationType}}</td>  
+    </tr>       
+    <tr>
+      <td>Investigation Type</td>
+      <td>{{result.InvestigationType}}</td>
+    </tr>      
+    <tr>
+      <td>Risks</td>
+       <td>{{result.Risks}}</td>
+    </tr>
+       
+    
+   </tbody>
+</table>

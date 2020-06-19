@@ -1,0 +1,126 @@
+CREATE TABLE Patient (
+    MRDno varchar(20) NOT NULL,
+    NDno varchar(20) NOT NULL,
+    Date date,
+	Name varchar(50) NOT NULL,
+	Sex varchar(10) NOT NULL,
+	PhoneNo varchar(15) NOT NULL,
+	GestationalAge varchar(20) NOT NULL,
+	BirthWeight int NOT NULL,
+	WeightOnDischarge int NOT NULL,
+	HCOnDischarge int NOT NULL,
+	LengthOnDischarge int NOT NULL,
+	DateOfBirth Date NOT NULL,
+	CurrentAge varchar(10),
+	DateOfAdmission Date NOT NULL,
+	Edd Date NOT NULL,
+	CurrentGestationalAge varchar(20),
+	DateOfDischarge Date NOT NULL,
+	Adress varchar(1000) NOT NULL,
+	State varchar(50) NOT NULL,
+	District varchar(50) NOT NULL,
+    PRIMARY KEY (MRDno)
+);
+
+CREATE TABLE States (
+    StateName varchar(50) NOT NULL,
+    Abbr varchar(2),
+    PRIMARY KEY (StateName)
+);
+
+INSERT INTO States VALUES ('Alabama', 'AL');
+
+CREATE TABLE Diagnosis (
+    MRDno varchar(20) NOT NULL,
+	Term varchar(20),
+	GestationalAge varchar(20) NOT NULL,
+	AgaSgaLga varchar(20),
+	LbwVlbwElbw varchar(20),
+	Morbidity varchar(200),
+	MorbiditiesTreatment varchar(100),
+    FOREIGN KEY (MRDno) REFERENCES Patient(MRDno)
+);
+
+CREATE TABLE Morbidities (
+    MorbidityName varchar(100));
+	
+CREATE TABLE MorbiditiesTreatment (
+    MorbidityTreatmentName varchar(100));
+
+Insert into MorbiditiesTreatment values ('Oxygen');
+Insert into MorbiditiesTreatment values ('CPAP');
+Insert into MorbiditiesTreatment values ('Phototherapy');
+Insert into MorbiditiesTreatment values ('Mechanical Ventilation');
+
+CREATE TABLE PatientRisks (
+    MRDno varchar(20) NOT NULL,
+	Risks varchar(200),
+	Severity int,
+	OverallSeverity int,
+    FOREIGN KEY (MRDno) REFERENCES Patient(MRDno)
+);
+
+CREATE TABLE Risks (
+	Risks varchar(200),
+	Severity int
+);
+
+CREATE TABLE Investigation (
+    MRDno varchar(20) NOT NULL,
+	InvestigationType varchar(200),
+	Severity varchar(20),
+	Reason  varchar(200),
+    FOREIGN KEY (MRDno) REFERENCES Patient(MRDno)
+);
+
+CREATE TABLE Immunization (
+    MRDno varchar(20) NOT NULL,
+	ImmunnizationType varchar(200),
+    FOREIGN KEY (MRDno) REFERENCES Patient(MRDno)
+);
+
+CREATE TABLE ImmunizationTypes (
+	ImmunnizationType varchar(200)
+);
+
+insert into ImmunizationTypes values ('BCG');
+insert into ImmunizationTypes values ('PENTA 1');
+insert into ImmunizationTypes values ('PENTA 2');
+insert into ImmunizationTypes values ('PENTA 3');
+insert into ImmunizationTypes values ('MEASLES(1st)/MR/MMR');
+insert into ImmunizationTypes values ('MEASLES(2st)/MR/MMR');
+insert into ImmunizationTypes values ('PENTA(1st booster)');
+insert into ImmunizationTypes values ('OPV');
+insert into ImmunizationTypes values ('IPV');
+insert into ImmunizationTypes values ('HBV');
+insert into ImmunizationTypes values ('IPV(1st Booster)');
+
+CREATE TABLE Medication (
+    MRDno varchar(20) NOT NULL,
+    Medication varchar(50),
+    FOREIGN KEY (MRDno) REFERENCES Patient(MRDno)
+);
+
+CREATE TABLE Anticonvulsant (
+    MRDno varchar(20) NOT NULL,
+    Anticonvulsant varchar(50),
+    FOREIGN KEY (MRDno) REFERENCES Patient(MRDno)
+);
+
+CREATE TABLE MedicationTypes (
+    Medication varchar(50)
+);
+
+CREATE TABLE AnticonvulsantTypes (
+    Anticonvulsant varchar(50)
+);
+
+insert into MedicationTypes values ('Syp Calcium P');
+insert into MedicationTypes values ('Multivitamin drops');
+insert into MedicationTypes values ('Vitamin D3 drops');
+insert into MedicationTypes values ('Iron drops');
+insert into MedicationTypes values ('HMF sachets');
+insert into AnticonvulsantTypes values ('Phenobarbitone');
+insert into AnticonvulsantTypes values ('Levetiracetam');
+insert into AnticonvulsantTypes values ('Clobazam');
+insert into AnticonvulsantTypes values (Phenytoin);

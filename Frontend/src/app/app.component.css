@@ -1,0 +1,22 @@
+.nav {
+    width: 25%;
+}
+.nav-pills .nav-link {
+    color: grey;
+    padding: 16px;
+    margin: 4px;
+    line-height: 24px;
+
+}
+.nav-pills .nav-link:hover {
+    color: white;
+    cursor: pointer;
+
+}
+.nav-pills .nav-link.active {
+    color: rgb(0, 123, 140) !important;
+    background-color: transparent !important;
+}
+.nav-pills .nav-link i {
+    margin: 8px;
+}
